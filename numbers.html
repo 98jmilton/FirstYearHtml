@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<script>
+
+function arrayStats(){
+var array=[];
+for (var i=0; i<100; i++){
+array.push(Math.round(Math.random() * 999));
+}
+
+
+var sum=0;
+var k=array.length;
+
+	for(var l=0; l<k; l++){sum+=array[l]}
+	document.getElementById("sum").innerHTML = "Sum of the array = "+sum+" <br>"
+	
+	var average = sum / k;
+	document.getElementById("average").innerHTML = "Average of the array = "+average+" <br>"
+	
+	var largest = array[0];
+	var smallest = array[0];
+	
+	for(var j=1; j < k; j++)
+    {if(array[j] > largest){
+		largest = array[j];
+		}
+    else if (array[j] < smallest){
+		smallest = array[j];
+		}
+	}
+	document.getElementById("large").innerHTML = "Largest number of the array= "+largest+" <br>"
+	document.getElementById("small").innerHTML = "Smallest number of the array= "+smallest+" <br>"
+				
+	array.toString();			
+	document.getElementById("string").innerHTML = "The Array of 100 numbers= "+array.toString();
+
+}
+</script>
+
+<body onload="arrayStats();">
+<p id='string'></p>
+<p id='sum'>Sum of the array =</p>
+<p id='average'>Average of the array =</p>
+<p id='large'>Largest number of the array=</p>
+<p id='small'>Smallest number of the array=</p>
+
+</body>
+</html>
+

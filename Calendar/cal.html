@@ -1,0 +1,55 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<style> 
+th { background:#5555FF; } 
+.grey { background:#DDDDDD; } 
+.day { background:#AAAAFF; } 
+.today { background:#FFAAFF; 
+</style> 
+<script> 
+function showCalendar() { 
+var noofdays = parseInt(document.getElementById("txtNumDays").value); 
+var firstday = parseInt(document.getElementById("txtFirstDay").value); 
+document.getElementById("divOutput").innerHTML = getHtmlCalendar(noofdays, firstday)
+}
+function getHtmlCalendar(noofdays, firstday) { 
+var myDateObject = new Date; 
+var currentDayNum = myDateObject.getDate(); 
+
+var html = "<table border=1><tr><th width=50>Sun</th><th width=50>Mon</th><th width=50>Tue</th><th width=50>Wed</th><th width=50>Thu</th><th width=50>Fri</th><th width=50>Sat</th></tr>"; 
+var currColumn = 0; 
+html += "<tr>"; 
+for (i=0; i<firstday; i++) { 
+html += "<td class='grey'></td>"; 
+currColumn++; 
+}
+var day=1; 
+while (day <= noofdays) 
+{ 
+if (day==currentDayNum) 
+html += "<td class=itoday'><u><b>" + day + "</b></u></td>" 
+else 
+html += "<td class='day'>" + day + "</td>"; 
+currColumn++; 
+if (currColumn==7) {html += "</tr><tr>"; 
+currColumn=0; 
+} 
+day++; 
+}
+if (currColumn>0) { 
+for (i=currColumn; i<7; i++) 
+html += "<td class='grey'></td>"; 
+}
+html += "</tr></table>"; 
+document.getElementById("pOutput").innerHTML = html
+} 
+</script> 
+</head> 
+<body> 
+Number of days in the month? <input id='txtNumDays'><br> 
+1st of the month is on day 0-6? <input id='txtFirstDay'><br> 
+<button onclick='showCalendar();'>Show Calendar</button><br> 
+<div id="pOutput"></div>
+</body> 
+</html> 

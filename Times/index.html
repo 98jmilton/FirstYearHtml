@@ -1,0 +1,50 @@
+<html>
+<head>
+<script>
+function start(){
+getTime();
+clientTime();
+var t = setTimeout(start, 500);
+}
+
+function clientTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('client').innerHTML =
+    h + ":" + m + ":" + s;
+    
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  
+    return i;
+}
+
+
+function getTime() {
+
+var requester = new XMLHttpRequest;
+requester.onreadystatechange = function() {
+if (requester.readyState == 4 && requester.status == 200) {
+
+document.getElementById("divTime").innerHTML =requester.responseText;
+}}
+
+requester.open("GET", "time.php", true);
+requester.send();
+}
+
+</script>
+</head>
+<body onload="start()">
+
+<h1>The time on the server is:</h1>
+<div id="client"></div>
+<div id="divTime"></div>
+
+</form>
+</body>
+</html>

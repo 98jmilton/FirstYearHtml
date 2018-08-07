@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<script>
+var i=1;
+var images = document.getElementById("image");
+	
+	function changeBanner() {
+		if(i<=6){
+			if(i==6){i=0};
+			i++;
+			image.src = "http://www.psychicsoftware.com/ct1113/banner-image-"+i+".png";
+			} 
+		
+	}
+</script>
+
+<body>
+<img alt="" src="http://www.psychicsoftware.com/ct1113/banner-image-1.png" id="image" onclick='changeBanner()' >
+</body>
+</html>
+

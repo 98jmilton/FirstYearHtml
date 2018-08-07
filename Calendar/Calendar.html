@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" type="text/css" href="calendar.css" />
+<head>
+<script>
+var dayslist = [];
+var daynum=0;
+var monthnum=0;
+var date = new Date();
+var day = date.getDate();
+var week = 7
+
+
+function sortCalendar() {
+var dayNum = document.getElementById("dayNumber").value;
+daynum = parseInt(dayNum);
+if (isNaN(daynum) || daynum > 6){alert("Please enter a number between 0 and 6 to represent starting day!");}
+
+
+var monthlength = document.getElementById("monthNumber").value;
+monthnum = parseInt(monthlength);
+if (isNaN(monthnum) || monthnum>31 || monthnum<28){ alert("Please enter a correct number of days for the month!");} 
+
+for(var i=0;i<35; i++){dayslist[i] =" "}
+
+for (var j= daynum; j<=monthnum+daynum-1; j++) {dayslist[j] = j-daynum+1;}
+
+var html = "<table id=\"t02\" border='1'><tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr><tr> "; 
+	
+var l=dayslist.length;	
+	
+	for(var n=0;n<l;n++){  
+		
+		if(n%week==0){ if(n!=l){html+="</tr><tr>"}}
+		if(isNaN(dayslist[n])){html+="<td >"+dayslist[n]+"</td>"}
+		else if(dayslist[n]==day){html+="<td id=\"today\">"+dayslist[n]+"</td>";}
+		else{html+="<td id=\"day\">"+dayslist[n]+"</td>"}
+		
+	}	
+
+
+html+="</tr></table>";
+document.getElementById("pOutput").innerHTML = html
+}
+</script>	
+</head>
+<body>
+<p>Enter the week day the 1st falls on (0-6) and then number of days in the month</p>
+<table id="t01" border='1'><tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr><tr><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr></table>
+<p>Starting Day of month:<input type='text' id='dayNumber'></p>
+<p>Number of days in month:<input type='text' id='monthNumber'></p> 
+<button onclick='sortCalendar();'>Create Calendar</button>
+<div id="pOutput"></div>
+</body>
+</html>
+

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+th { background:#5555FF; } 
+.grey { background:#DDDDDD; } 
+.day { background:#AAAAFF; } 
+.today { background:#FFAAFF; 
+</style>
+<script>
+
+function GetCalendar(){
+var month = document.getElementById("listid").value; 
+var txt = document.getElementById("yearNumber").value; 
+var year = parseInt(txt);
+if (isNaN(year))
+alert(txt + " is not a year!");
+
+
+var day = first_day(year, month);
+var noofdays = daysInMonth(year,month);
+
+buildCalendar(noofdays,day)
+}
+
+function buildCalendar(noofdays,day){
+var dayslist= [];
+for (var j= day; j<=noofdays+day-1; j++) {dayslist[j] = j-day+1;}
+
+var html = "<table border=1 class='grey'><tr><th width=50>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr><tr> "; 
+	
+var l=dayslist.length;	
+	
+	for(var n=0;n<l;n++){  
+		
+		if(n%7==0){ if(n!=l){html+="</tr><tr>"}}
+		if(isNaN(dayslist[n])){html+="<td class='grey' border =0px></td>"}
+		else if(dayslist[n]==day){html+="<td class='day'>"+dayslist[n]+"</td>";}
+		else{html+="<td class='day'>"+dayslist[n]+"</td>"}
+	}
+var e = (l%7);
+alert(e)
+while(e<7 && e!=0){
+	html+= "<td class='grey' border =0px></td>"
+	e++
+}	
+	
+html+="</tr></table>";
+document.getElementById("pOutput").innerHTML = html
+}
+
+	
+	
+function daysInMonth(year,month){
+	if(month== 9 || month == 4 || month == 6 || month == 11)
+		return 30;
+	if (month !=2)
+		return 31;
+	if(month = 2){
+		return (28+is_leap(year));
+	}
+}
+
+function is_leap(year) {
+return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+}
+
+function first_day(year, month) {
+var daynumber = new_years_day(year); 
+for (var i=1; i<month; i++) {daynumber+=daysInMonth(year, i)}
+daynumber %= 7;
+return daynumber;
+}
+
+function new_years_day(year) {
+var daynumber = 1; 
+for (var i=1900; i<year; i++) daynumber+=365+is_leap(i); 
+return (daynumber % 7); 
+}
+
+</script>
+</head>
+<body>
+<p>Please Enter year:<input type='text' id='yearNumber'></p> 
+<p>Select month to show:
+<select name="listlable" id="listid"> Select month to show:
+<option value="1" selected="selected">January</option>
+<option value="2">February</option>
+<option value="3">March</option>
+<option value="4">April</option>
+<option value="5">May</option>
+<option value="6">June</option>
+<option value="7">July</option>
+<option value="8">August</option>
+<option value="9">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>
+</select> </p>
+<button onclick="GetCalendar();">Create Calendar</button>
+<div id="pOutput"></div>
+</body>
+</html>
+

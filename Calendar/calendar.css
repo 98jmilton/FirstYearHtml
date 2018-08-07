@@ -1,0 +1,37 @@
+html{
+	background-color:green;
+	}
+	
+table#t01 th{
+	font-size: 20px;
+	background-color:gray;
+}
+table#t01 td{
+	font-size: 20px;
+	background-color:ligh tgray;
+}
+	
+table#t02{
+	background-color:gray;
+}
+
+table#t02 th{
+	font-size: 35px;
+	background-color: blue;
+	}
+	
+table#t02{
+	
+	font-size: 30px;
+	background-color: gray;
+	}
+ 
+#day{
+	background-color:lightblue;
+	font-size:30px
+}
+#today{
+	background-color:pink;
+	text-decoration:underline;
+}
+

@@ -1,0 +1,26 @@
+<html>
+<head>
+<script>
+function getName(){
+var num = document.getElementById("num").value;
+if(isNaN(parseInt(num)))
+	num = "-1"
+	
+	
+var requester = new XMLHttpRequest;
+requester.onreadystatechange = function() {
+if (requester.readyState == 4 && requester.status == 200) {
+document.getElementById("divName").innerHTML =requester.responseText;
+}}
+requester.open("GET", "getname.php?num="+num, true);
+requester.send();
+}
+</script>
+</head><body>
+<div id="divName"></siv>
+Enter your number:
+<input id="num">
+<input type="button" value="Show Name" onclick="getName();">
+</form>
+</body>
+</html>

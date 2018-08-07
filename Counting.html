@@ -1,0 +1,57 @@
+<html>
+<head>
+<script>
+var countClicks = 0
+var countDoubClicks = 0
+var countMouseovers = 0
+var countMouseouts = 0
+
+function Clicks(){
+countClicks+=1;
+document.getElementById("Clicks").innerHTML = countClicks;
+}
+function DoubleClicks(){
+countDoubClicks+=1;
+document.getElementById("DoubleClicks").innerHTML = countDoubClicks;
+}
+
+
+function Mouseovers(){
+countMouseovers+=1;
+document.getElementById("Mouseovers").innerHTML = countMouseovers;
+}
+function Mouseouts(){
+countMouseouts+=1;
+document.getElementById("Mouseouts").innerHTML = countMouseouts;
+}
+
+</script>
+</head>
+<body style="background-color:green;">
+	<p style="text-align:center">
+		<img alt="" name="image" src="https://ih0.redbubble.net/image.335977951.5161/flat,550x550,075,f.jpg"
+		onclick = "Clicks();"
+		ondblclick = "DoubleClicks();"
+		onmouseover = "Mouseovers();"
+		onmouseout = "Mouseouts();"
+
+		>
+	</p>
+<table>
+	<tr>
+		<th>Clicks</th>
+		<th>Double Clicks</th>
+		<th>Mouseovers</th>
+		<th>Mouseouts</th>
+	</tr>
+	<tr>
+		<td id='Clicks'>0</td>
+		<td id='DoubleClicks'>0</td>
+		<td id='Mouseovers'>0</td> 
+		<td id='Mouseouts'>0</td>
+	</tr>
+
+</table>
+
+</body>
+</html>

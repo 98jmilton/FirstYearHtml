@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<?php
+$tenyears = 60*60*248365*10;
+$times = 0;
+if(isset($_COOKIE[$times])){
+ $times=$COOKIE['times']
+
+ $times++
+setcookie("times",$times, time()+$tenyears);
+
+
+?>
+<html>
+<body>
+<?php
+if(!isset($_COOKIE[$times])) {
+     echo "Please refresh page"
+} else {
+     echo "You have visited this page {$times} times.";
+}
+?>
+</body>
+</html> 

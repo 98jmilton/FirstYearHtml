@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<script>
+
+function updateOutput() {	
+
+var txt = document.getElementById("UserInput").value; 	
+
+var numchars = txt.length;	
+
+var charOutput = txt.length-1;	
+
+var wordoutput = 0;	
+
+for (var i=0; i<numchars; i++) {		
+
+var letter = txt.substr(i,1);		
+
+if (letter==" ") { wordoutput += 1;}
+
+document.getElementById("Output1").innerHTML = charOutput;
+
+document.getElementById("Output2").innerHTML = wordoutput;}
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<textarea id='UserInput' onkeyup="updateOutput();" value=""></textarea><br><p id='Output1'>Character Count will be shown here.</p>
+
+<p id='Output2'>Word Count will be shown here.</p>
+
+
+</body>
+
+</html>
+
+
+
+
+
+
